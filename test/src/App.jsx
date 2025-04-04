@@ -31,8 +31,12 @@ function App() {
     },
   };
   
-  const [isMemoOpen, setMemoOpen] = useState(true);
+  const [isMemoOpen, setMemoOpen] = useState(false);
   const [postUrl, setPostUrl] = useState("localhost:8080");
+
+  const timetable = fetch('http://localhost:8080/api/timetables?districtId=E10&schoolId=7310059&grade=3&classNm=3');
+  console.log(timetable);
+  
 
   return (
     <div className="App">
@@ -61,7 +65,7 @@ function App() {
                       </thead>
                       <tbody>
                           <tr>
-                            <td className="memo">문학<br /><span><textarea></textarea><span onClick={() => {}}>asd</span></span></td>
+                            <td className="memo" onClick={() => {setMemoOpen(true)}}>문학<br /><span>{}</span></td>
                             <td className="memo">1교시<br /><span><textarea></textarea></span></td>
                             <td className="memo">1교시<br /><span><textarea></textarea></span></td>
                             <td className="memo">1교시<br /><span><textarea></textarea></span></td>
