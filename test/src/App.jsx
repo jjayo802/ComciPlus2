@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css'
 import Modal from 'react-modal';
 import ReactModal from 'react-modal';
@@ -33,9 +33,18 @@ function App() {
   
   const [isMemoOpen, setMemoOpen] = useState(false);
   const [postUrl, setPostUrl] = useState("localhost:8080");
+  const [timetables, setTimetables] = useState([[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}]]);
 
-  const timetable = fetch('http://localhost:8080/api/timetables?districtId=E10&schoolId=7310059&grade=3&classNm=3');
-  console.log(timetable);
+  const getTables = async() => {
+    const timetable = await fetch('http://localhost:8080/api/timetables?districtId=E10&schoolId=7310059&grade=3&classNm=3')
+      .then((timetable) => timetable.json());
+    console.log(timetable);
+    setTimetables(timetable);
+  }
+
+  useEffect(() => {
+    getTables();
+  }, []);
   
 
   return (
@@ -65,7 +74,7 @@ function App() {
                       </thead>
                       <tbody>
                           <tr>
-                            <td className="memo" onClick={() => {setMemoOpen(true)}}>문학<br /><span>{}</span></td>
+                            <td className="memo" onClick={() => {setMemoOpen(true)}}>{timetables[0][0].name}<br /><span>{}</span></td>
                             <td className="memo">1교시<br /><span><textarea></textarea></span></td>
                             <td className="memo">1교시<br /><span><textarea></textarea></span></td>
                             <td className="memo">1교시<br /><span><textarea></textarea></span></td>
