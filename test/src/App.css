@@ -32,7 +32,7 @@ main{
 }
 
 #timetable{
-  width: 65vw;
+  width: 66vw;
 
   .body > table{
       width: 100%;
@@ -66,7 +66,7 @@ main{
               height: calc(80px - 10px);
               width: calc(100%/5);
               padding: 10px 0 0 10px;
-              font-size: 12px;
+              font-size: 20px;
               text-align: left;
               align-content: start;
 
@@ -85,6 +85,10 @@ main{
 
               input:checked + span > textarea{
                   display: block;
+              }
+
+              & > span {
+                font-size: 15px;
               }
 
               & > span > textarea{
@@ -118,7 +122,7 @@ main{
 }
 
 #lunchtable{
-  width: calc(45vw - 20px);
+  width: 25vw;
   margin-left: 20px;
 
   & > .body{

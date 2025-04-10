@@ -53,7 +53,7 @@ function App() {
           <h1 className='memoTitle'>메모 입력</h1>
           <form action={postUrl} method='post'>
             <div className='textWrapper'><textarea name="postMemo" cols="10" rows="10" id="postMemoInput"></textarea></div>
-            <div className='memoConfirm'><button className='memoConfirmButton'>확인</button><button type='button' onClick={() => setMemoOpen(false)}>취소</button></div>
+            <div className='memoConfirm'><button className='memoConfirmButton' >확인</button><button type='button' onClick={() => setMemoOpen(false)}>취소</button></div>
           </form>
       </Modal>
       <main>
@@ -74,8 +74,8 @@ function App() {
                       </thead>
                       <tbody>
                           <tr>
-                            <td className="memo" onClick={() => {setMemoOpen(true)}}>{timetables[0][0].name}<br /><span>{}</span></td>
-                            <td className="memo">1교시<br /><span><textarea></textarea></span></td>
+                            <td className="memo" onClick={() => {setMemoOpen(true)}}>{timetables[0][0].name}<br /><span>메모메모</span></td>
+                            {GetTableTD(0,1,timetables)}
                             <td className="memo">1교시<br /><span><textarea></textarea></span></td>
                             <td className="memo">1교시<br /><span><textarea></textarea></span></td>
                             <td className="memo">1교시<br /><span><textarea></textarea></span></td>
@@ -108,6 +108,11 @@ function App() {
 
     </div>
   );
+
+  function GetTableTD(day, period, timetables) 
+  {
+    return <td className="memo" onClick={() => {setMemoOpen(true)}}><b>{timetables[day][period].name}</b><br /><span>{timetables[day][period].memo}</span></td>
+  }
 } 
 
 export default App;
