@@ -9,6 +9,25 @@ main{
   margin: 60px;
 }
 
+.timetableTitle
+{
+    font-size: 15px;
+}
+
+.timetableMemo {
+    font-size: 10px;
+    padding-left: 10px;
+    padding-right: 18px;
+    padding-top: 7px;
+    padding-bottom: 0;
+    box-sizing: border-box;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    text-indent: 0; /* ✅ 혹시라도 기본 들여쓰기 방지 */
+    vertical-align: top;
+  }
+
 #timetable, #lunchtable{
   min-height: 87vh;
   background: #191919;
@@ -20,7 +39,7 @@ main{
 
       & > .title{
           font-weight: bold;
-          font-size: 24px;
+          font-size: 30px;
       }
   }
 
@@ -40,11 +59,12 @@ main{
       border-spacing: 0px;
       border-radius: 10px;
       overflow: hidden;
+      table-layout: fixed;
 
       & > thead > tr > th{
           height: calc(50px - 10px);
           padding: 10px 0 0 10px;
-          font-weight: bold;
+          font-weight: normal;
           font-size: 12px;
           text-align: left;
           align-content: start;
@@ -66,7 +86,7 @@ main{
               height: calc(80px - 10px);
               width: calc(100%/5);
               padding: 10px 0 0 10px;
-              font-size: 20px;
+              font-size: 8px;
               text-align: left;
               align-content: start;
 
@@ -82,27 +102,6 @@ main{
               &:hover{
                   background: #252525;
               }
-
-              input:checked + span > textarea{
-                  display: block;
-              }
-
-              & > span {
-                font-size: 15px;
-              }
-
-              & > span > textarea{
-                  margin-top: 5px;
-                  padding: 5px;
-                  color: white;
-                  background: #4e4e4e;
-                  outline: none;
-                  width: calc(100% - 22px);
-                  border-radius: 2px;
-                  font-size: 12px;
-                  resize: none;
-                  display: none;
-              }
           }
 
           &:nth-last-child(1){
@@ -113,6 +112,7 @@ main{
       & > tbody > tr > #lunchtime{
           padding: 0;
           height: 30px;
+          font-size: 20px;
           text-align: center;
           align-content: center;
 
@@ -141,6 +141,7 @@ main{
           color: white;
           border-radius: 10px;
           background: #252525;
+          white-space: pre-wrap;
 
           display: block;
 
@@ -197,6 +198,11 @@ main{
     margin-left: 3px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 24px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 16px;
+    box-sizing: border-box;
 }
 
 .textwrapper
@@ -210,12 +216,13 @@ main{
 .memoTitle
 {
     text-align: center;
+    margin-top: 15px;
 }
 
 .memoConfirm
 {
     text-align: center;
-    margin: 0 auto;
+    margin-top: 15px;
     padding-bottom: 10px;
 }
 
@@ -223,3 +230,4 @@ main{
 {
     margin-right: 10px;
 }
+
