@@ -46,6 +46,9 @@ function App() {
   const [timetables, setTimetables] = useState([[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}]]);
   const [meals, setMeals] = useState([{},{},{},{},{}]);
 
+  const [isLunchOpens, setIsLunchOpens] = useState([false, false, false, false, false, false]);
+  const lunchDays = ["월","화","수","목","금"];
+
   const getTables = async() => {
     const timetable = await fetch('http://localhost:8080/api/timetables' + location.search)
       .then((timetable) => timetable.json());
@@ -127,110 +130,117 @@ function App() {
           </form>
       </Modal>
       <main>
-      <div id="timetable">
-            <div className="header">
-                <div className="title">시간표</div>
-            </div>
-            <div className="body">
-                <table>
-                    <thead>
+        <div id="timetable">
+          <div className="header">
+              <div className="title">시간표</div>
+          </div>
+          <div className="body">
+              <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">월</th>
+                      <th scope="col">화</th>
+                      <th scope="col">수</th>
+                      <th scope="col">목</th>
+                      <th scope="col">금</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                       <tr>
-                        <th scope="col">월</th>
-                        <th scope="col">화</th>
-                        <th scope="col">수</th>
-                        <th scope="col">목</th>
-                        <th scope="col">금</th>
+                        {GetTableTD(0,0,timetables)}
+                        {GetTableTD(1,0,timetables)}
+                        {GetTableTD(2,0,timetables)}
+                        {GetTableTD(3,0,timetables)}
+                        {GetTableTD(4,0,timetables)}
                       </tr>
-                    </thead>
-                    <tbody>
+                  </tbody>
+                  <tbody>
+                      <tr>
+                        {GetTableTD(0,1,timetables)}
+                        {GetTableTD(1,1,timetables)}
+                        {GetTableTD(2,1,timetables)}
+                        {GetTableTD(3,1,timetables)}
+                        {GetTableTD(4,1,timetables)}
+                      </tr>
+                  </tbody>
+                  <tbody>
+                      <tr>
+                        {GetTableTD(0,2,timetables)}
+                        {GetTableTD(1,2,timetables)}
+                        {GetTableTD(2,2,timetables)}
+                        {GetTableTD(3,2,timetables)}
+                        {GetTableTD(4,2,timetables)}
+                      </tr>
+                  </tbody>
+                  <tbody>
+                      <tr>
+                        {GetTableTD(0,3,timetables)}
+                        {GetTableTD(1,3,timetables)}
+                        {GetTableTD(2,3,timetables)}
+                        {GetTableTD(3,3,timetables)}
+                        {GetTableTD(4,3,timetables)}
+                      </tr>
+                  </tbody>
+                  <tbody>
                         <tr>
-                          {GetTableTD(0,0,timetables)}
-                          {GetTableTD(1,0,timetables)}
-                          {GetTableTD(2,0,timetables)}
-                          {GetTableTD(3,0,timetables)}
-                          {GetTableTD(4,0,timetables)}
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                          {GetTableTD(0,1,timetables)}
-                          {GetTableTD(1,1,timetables)}
-                          {GetTableTD(2,1,timetables)}
-                          {GetTableTD(3,1,timetables)}
-                          {GetTableTD(4,1,timetables)}
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                          {GetTableTD(0,2,timetables)}
-                          {GetTableTD(1,2,timetables)}
-                          {GetTableTD(2,2,timetables)}
-                          {GetTableTD(3,2,timetables)}
-                          {GetTableTD(4,2,timetables)}
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                          {GetTableTD(0,3,timetables)}
-                          {GetTableTD(1,3,timetables)}
-                          {GetTableTD(2,3,timetables)}
-                          {GetTableTD(3,3,timetables)}
-                          {GetTableTD(4,3,timetables)}
-                        </tr>
-                    </tbody>
-                    <tbody>
-                          <tr>
-                              <td colSpan="5" id="lunchtime">점심시간</td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                          {GetTableTD(0,4,timetables)}
-                          {GetTableTD(1,4,timetables)}
-                          {GetTableTD(2,4,timetables)}
-                          {GetTableTD(3,4,timetables)}
-                          {GetTableTD(4,4,timetables)}
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                          {GetTableTD(0,5,timetables)}
-                          {GetTableTD(1,5,timetables)}
-                          {GetTableTD(2,5,timetables)}
-                          {GetTableTD(3,5,timetables)}
-                          {GetTableTD(4,5,timetables)}
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                          {GetTableTD(0,6,timetables)}
-                          {GetTableTD(1,6,timetables)}
-                          {GetTableTD(2,6,timetables)}
-                          {GetTableTD(3,6,timetables)}
-                          {GetTableTD(4,6,timetables)}
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                            <td colSpan="5" id="lunchtime">점심시간</td>
+                      </tr>
+                  </tbody>
+                  <tbody>
+                      <tr>
+                        {GetTableTD(0,4,timetables)}
+                        {GetTableTD(1,4,timetables)}
+                        {GetTableTD(2,4,timetables)}
+                        {GetTableTD(3,4,timetables)}
+                        {GetTableTD(4,4,timetables)}
+                      </tr>
+                  </tbody>
+                  <tbody>
+                      <tr>
+                        {GetTableTD(0,5,timetables)}
+                        {GetTableTD(1,5,timetables)}
+                        {GetTableTD(2,5,timetables)}
+                        {GetTableTD(3,5,timetables)}
+                        {GetTableTD(4,5,timetables)}
+                      </tr>
+                  </tbody>
+                  <tbody>
+                      <tr>
+                        {GetTableTD(0,6,timetables)}
+                        {GetTableTD(1,6,timetables)}
+                        {GetTableTD(2,6,timetables)}
+                        {GetTableTD(3,6,timetables)}
+                        {GetTableTD(4,6,timetables)}
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
         </div>
         <div id="lunchtable">
-            <div className="header">
-                <div className="title">급식</div>
+          <div className="header">
+            <div className="title">급식</div>
+          </div>
+          <div className="body">
+            {GetMealDiv(0,meals)}
+            {GetMealDiv(1,meals)}
+            {GetMealDiv(2,meals)}
+            {GetMealDiv(3,meals)}
+            {GetMealDiv(4,meals)}
+            <div>
+              <div className="title">
+                알레르기 정보
+                <span className="lunchOpenArrow" onClick={() => {
+                  isLunchOpens[5] = !isLunchOpens[5];
+                  setIsLunchOpens([...isLunchOpens])
+                }}>                                              {isLunchOpens[5] ? "▲" : "▼"}</span>
+              </div>
+              <div className="box" style={{display: isLunchOpens[5] ? "block" : "none"}}>
+                ①난류 ②우유 ③메밀 ④땅콩 ⑤대두 ⑥밀 ⑦고등어 ⑧게 ⑨새우 ⑩돼지고기 ⑪복숭아 ⑫토마토 ⑬아황산류 ⑭호두 ⑮닭고기 ⑯쇠고기 ⑰오징어 ⑱조개류(굴,전복,홍합 포함) ⑲잣
+              </div>
             </div>
-            <div className="body">
-                <div className="title">월</div>
-                {GetMealDiv(0,meals)}
-                <div className="title">화</div>
-                {GetMealDiv(1,meals)}
-                <div className="title">수</div>
-                {GetMealDiv(2,meals)}
-                <div className="title">목</div>
-                {GetMealDiv(3,meals)}
-                <div className="title">금</div>
-                {GetMealDiv(4,meals)}
-            </div>
+          </div>
         </div>
-    </main>
+      </main>
 
     </div>
   );
@@ -243,7 +253,7 @@ function App() {
         setMemoPeriod(timetables[day][period].period);
         setMemoYmd(timetables[day][period].ymd);
         setMemoContent(timetables[day][period].memo);
-      }}>
+        }}>
         <span className='timetableTitle'>{timetables[day][period] ? timetables[day][period].name : ""}</span>
         <br />
         <div className='timetableMemo'>
@@ -256,8 +266,17 @@ function App() {
   function GetMealDiv(day, meals)
   {
     return (
-      <div className="box">
+      <div>
+        <div className="title">
+          {lunchDays[day]}
+          <span className="lunchOpenArrow" onClick={() => {
+            isLunchOpens[day] = !isLunchOpens[day];
+            setIsLunchOpens([...isLunchOpens])
+          }}>                                                                {isLunchOpens[day] ? "▲" : "▼"}</span>
+        </div>
+        <div className="box" style={{display: isLunchOpens[day] ? "block" : "none"}}>
           {meals[day].meal ? meals[day].meal.replace(/<br\s*\/?>/gi, "\n") : ""}
+        </div>
       </div>
     )
   }
