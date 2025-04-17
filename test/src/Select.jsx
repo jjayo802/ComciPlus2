@@ -16,7 +16,7 @@ function Select() {
         const searchParams = new URLSearchParams();
         searchParams.set("districtId", districtId);
         searchParams.set("schoolName", schoolName);
-        const results = await fetch('http://localhost:8080/api/schools?' + searchParams.toString())
+        const results = await fetch('http://192.168.0.23:8080/api/schools?' + searchParams.toString())
             .then((results) => results.json());
         
         setLoadedSchools(results);
@@ -27,7 +27,7 @@ function Select() {
         searchParams.set("districtId", districtId);
         searchParams.set("schoolId", schoolId);
         searchParams.set("grade", grade);
-        const results = await fetch('http://localhost:8080/api/classes?' + searchParams.toString())
+        const results = await fetch('http://192.168.0.23:8080/api/classes?' + searchParams.toString())
             .then((results) => results.json());
 
         setLoadedClasses(results);
