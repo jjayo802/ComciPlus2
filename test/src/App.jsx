@@ -42,7 +42,7 @@ function App() {
   const [memoContent, setMemoContent] = useState("");
   const [memoYmd, setMemoYmd] = useState("");
   const [memoPeriod, setMemoPeriod] = useState(0);
-  const [postUrl, setPostUrl] = useState("http://localhost:8080/api/timetables/memo");
+  const [postUrl, setPostUrl] = useState("http://jjayodesktop.kro.kr:8080/api/timetables/memo");
   const [timetables, setTimetables] = useState([[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}],[{},{},{},{},{},{},{}]]);
   const [meals, setMeals] = useState([{},{},{},{},{}]);
 
@@ -50,14 +50,14 @@ function App() {
   const lunchDays = ["월","화","수","목","금"];
 
   const getTables = async() => {
-    const timetable = await fetch('http://localhost:8080/api/timetables' + location.search)
+    const timetable = await fetch('http://jjayodesktop.kro.kr:8080/api/timetables' + location.search)
       .then((timetable) => timetable.json());
     console.log(timetable);
     setTimetables(timetable);
   }
 
   const getMeals = async() => {
-    const meals = await fetch('http://localhost:8080/api/meals' + location.search)
+    const meals = await fetch('http://jjayodesktop.kro.kr:8080/api/meals' + location.search)
       .then((meals) => meals.json());
     console.log(meals);
     setMeals(meals);
@@ -77,7 +77,7 @@ function App() {
     const data = Object.fromEntries(formData.entries());
 
     // POST 요청 보내기 (예: fetch)
-    fetch('http://localhost:8080/api/timetables/memo', {
+    fetch('http://jjayodesktop.kro.kr:8080/api/timetables/memo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // ✅ 중요!
@@ -241,7 +241,6 @@ function App() {
           </div>
         </div>
       </main>
-
     </div>
   );
 
