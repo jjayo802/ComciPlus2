@@ -135,6 +135,8 @@ main {
           padding: 15px;
           border-radius: 10px;
           background: #252525;
+          display: flex;
+          justify-content: space-between;
       }
       & > div > .box{
           transition: .1s;
@@ -194,8 +196,9 @@ main {
 }
 
 #postMemoInput {
-    width: 97%;
-    height: 100%;
+    width: 100%;
+    min-height: 200px;
+    max-height: 300px;
     resize: none;
     margin-left: 3px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

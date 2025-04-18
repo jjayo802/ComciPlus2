@@ -17,8 +17,9 @@ function App() {
       left: "0",
     },
     content: {
-      width: "500px",
-      height: "500px",
+      width: "90vw",
+      maxWidth: "500px",
+      height: "70vh",
       zIndex: "150",
       position: "absolute",
       top: "50%",
@@ -228,11 +229,11 @@ function App() {
             {GetMealDiv(4,meals)}
             <div>
               <div className="title">
-                알레르기 정보
-                <span className="lunchOpenArrow" onClick={() => {
+                <div className='lunchTitle'>알레르기 정보</div>
+                <div className="lunchOpenArrow" onClick={() => {
                   isLunchOpens[5] = !isLunchOpens[5];
                   setIsLunchOpens([...isLunchOpens])
-                }}>                                              {isLunchOpens[5] ? "▲" : "▼"}</span>
+                }}>{isLunchOpens[5] ? "▲" : "▼"}</div>
               </div>
               <div className="box" style={{display: isLunchOpens[5] ? "block" : "none"}}>
                 ①난류 ②우유 ③메밀 ④땅콩 ⑤대두 ⑥밀 ⑦고등어 ⑧게 ⑨새우 ⑩돼지고기 ⑪복숭아 ⑫토마토 ⑬아황산류 ⑭호두 ⑮닭고기 ⑯쇠고기 ⑰오징어 ⑱조개류(굴,전복,홍합 포함) ⑲잣
@@ -267,11 +268,11 @@ function App() {
     return (
       <div>
         <div className="title">
-          {lunchDays[day]}
-          <span className="lunchOpenArrow" onClick={() => {
+          <div className="lunchTitle">{lunchDays[day]}</div>
+          <div className="lunchOpenArrow" onClick={() => {
             isLunchOpens[day] = !isLunchOpens[day];
             setIsLunchOpens([...isLunchOpens])
-          }}>                                                                {isLunchOpens[day] ? "▲" : "▼"}</span>
+          }}>{isLunchOpens[day] ? "▲" : "▼"}</div>
         </div>
         <div className="box" style={{display: isLunchOpens[day] ? "block" : "none"}}>
           {meals[day].meal ? meals[day].meal.replace(/<br\s*\/?>/gi, "\n") : ""}
